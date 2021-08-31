@@ -191,7 +191,7 @@ void SIO::DCBToNix()
 	dcb.config.c_iflag |= IXON; // foutx, finx
 	// rts not on linux...
 	// abort on error ??
-	dcb.config.c_cflag &= ~(CSIZE | PARENB);
+	dcb.config.c_cflag &= ~(CSIZE | PARENB | CLOCAL);
 	dcb.config.c_cflag |= CS8; // set byte size to 8, no parity
 	dcb.config.c_cflag &= ~(CSTOPB); // 1 stop bit
 	dcb.config.c_cc[VINTR] = 10;
@@ -228,7 +228,17 @@ bool SIO::SetMode(int baud)
 	//SetTimeouts(timeouts);
 	dcb.BaudRate = baud;
 	DCBToNix();
+
 	int r = tcsetattr(hSerialPort, TCSANOW, &dcb.config);
+
+	#ifdef __APPLE__
+	// Mac OS X doesn't respect the baud setting in the termios
+	// structure, so we'll do some additional translation here
+	speed_t speed = baud;
+	int speed_setting_result = ioctl(hSerialPort, IOSSIOSPEED, &speed);
+	ASSERT_NO_ERROR(speed_setting_result);
+	#endif
+
 	assert(fcntl(hSerialPort, F_SETFL, 0) >= 0);
 	assert(r >= 0);
 	// 0 is a pass..
