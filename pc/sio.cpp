@@ -43,26 +43,17 @@ DCB::~DCB()
 SIO::Result SIO::Write(const void* src, int len)
 {
 	DWORD writtensize;
-	//printf("trying write...\n");
 	writtensize = write(hSerialPort, src, len);
-
 	if(verbose) {
-	//	std::cout << "Wrote " << writtensize << " byte(s) of " << len << std::endl;
+		std::cout << "SIO::Write() len=" << len << " bytes, "
+			<< writtensize << " successful." << std::endl;
 	}
-
 	if(int(writtensize) == len) {
-		//printf("write ok\n");	
 		return OK;
+	} else {
+		printf("sio::Write() error\n");
+		return ERR;
 	}
-
-	//if (WriteFile(hfile, src, len, &writtensize, 0))
-	//{
-	//	if (int(writtensize) == len)
-	//		return OK;
-	//}
-	if (verbose)
-		printf("sio::write error\n");
-	return ERR;
 }
 
 // ---------------------------------------------------------------------------
