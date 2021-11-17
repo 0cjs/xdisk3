@@ -18,6 +18,15 @@ Built and tested on a Pi400 + PC-8801mkII/FR.
 (Branch "old" is simply a mirror of xdisk 2.0.7)
 
 
+Client Usage
+------------
+
+If started without a diskette in the drive, the client will say `Couldn't
+make comminucation with sub system!` This means that it could not find a
+(formatted or unformatted) diskette in the drive. Inserting a diskette
+should quickly produce an `Ok` message.
+
+
 Bootstrapping Notes and Issues
 ------------------------------
 
