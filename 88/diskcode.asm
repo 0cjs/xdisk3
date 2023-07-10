@@ -18,7 +18,8 @@ idr_st1		equ	10
 idr_st2		equ	11
 
 DISKMODULE	equ	$
-		org	4000h
+;		org	4000h
+		phase	$4000
 DISKCODEBEGIN	equ	$
 
 ; ----------------------------------------------------------------------------
@@ -1115,9 +1116,10 @@ DISKCODELEN	equ	$-DISKCODEBEGIN
 
 d_idtable	ds	400h
 
-d_data		equ	($+0ffh) and 0ff00h
+d_data		equ	($+0ffh) & 0ff00h
 d_datatop	equ	07f00h
 
 diskblockend	equ	$
-		org	DISKMODULE+DISKCODELEN
+;		org	DISKMODULE+DISKCODELEN
+		dephase
 

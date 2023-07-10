@@ -15,7 +15,7 @@ InInit:
 		di
 		ld	a,i
 		ld	(InOldI),a
-		ld	a,HIGH InVector
+		ld	a,HIGH(InVector)
 		ld	i,a
 		ld	a,(PORTE6)
 		ld	(InOldPortE6),a
@@ -69,7 +69,7 @@ InVsync1:
 SelectN88ROM:
 		di
 		ld	a,(PORT31)
-		and	not 6
+		and	not(6)
 		out	(31h),a
 		ld	(PORT31),a
 		ei

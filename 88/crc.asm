@@ -19,9 +19,9 @@ CalcCRC:
 		xor	d
 		ld	l,a
 		ld	a,e
-		ld	h,high CRCTABLE_L
+		ld	h,high(CRCTABLE_L)
 		ld	e,(hl)
-		ld	h,high CRCTABLE_H
+		ld	h,high(CRCTABLE_H)
 		xor	(hl)
 		ld	d,a
 		pop	hl
@@ -44,9 +44,9 @@ CalcCRCBlock_1:
 		xor	d
 		ld	l,a
 		ld	a,e
-		ld	h,high CRCTABLE_L
+		ld	h,high(CRCTABLE_L)
 		ld	e,(hl)
-		ld	h,high CRCTABLE_H
+		ld	h,high(CRCTABLE_H)
 		xor	(hl)
 		ld	d,a
 		exx
@@ -78,10 +78,10 @@ buildcrc_1:
 		ld	l,a
 buildcrc_2:
 		djnz	buildcrc_1
-		ld	b,high CRCTABLE_H
+		ld	b,high(CRCTABLE_H)
 		ld	a,h
 		ld	(bc),a
-		ld	b,high CRCTABLE_L
+		ld	b,high(CRCTABLE_L)
 		ld	a,l
 		ld	(bc),a
 		inc	c

@@ -144,10 +144,10 @@ GetROM_erom:
 		di
 		in	a,(32h)
 		push	af
-		and	not 3
+		and	not(3)
 		or	c
 		out	(32h),a
-		ld	a,not 1
+		ld	a,not(1)
 		out	(71h),a
 		ld	a,b
 		and	1
@@ -167,7 +167,7 @@ GetROM_N:
 		ld	b,a
 		ld	a,(PORT31)
 		push	af
-		and	not 2
+		and	not(2)
 		or	4
 		ld	(PORT31),a
 		out	(31h),a
@@ -271,7 +271,7 @@ GetROM_cdbios_2:
 		
 		ld	a,(PORT31)
 		push	af
-		and	not 6
+		and	not(6)
 		or	c
 		ld	(PORT31),a
 		out	(31h),a

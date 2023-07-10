@@ -249,7 +249,7 @@ PutTrackInfo:
 		
 		ld	a,(DiSectors)
 		or	a
-		jr	z,PutTrackInfo_unf
+		jp	z,PutTrackInfo_unf
 		
 		ld	hl,(DiDataLength)
 		push	hl

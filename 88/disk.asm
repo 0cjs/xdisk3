@@ -505,9 +505,9 @@ DiGetTypeStr:
 		and	3
 		add	a,a
 		add	a,a
-		add	a,LOW DiGetTypeStr_t
+		add	a,LOW(DiGetTypeStr_t)
 		ld	l,a
-		ld	a,HIGH DiGetTypeStr_t
+		ld	a,HIGH(DiGetTypeStr_t)
 		adc	a,0
 		ld	h,a
 		ret

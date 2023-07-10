@@ -91,9 +91,9 @@ Main_2:
 		; コマンドを実行
 		
 		add	a,a
-		add	a,low CmdTable
+		add	a,low(CmdTable)
 		ld	l,a
-		ld	a,high CmdTable
+		ld	a,high(CmdTable)
 		adc	a,0
 		ld	h,a
 		

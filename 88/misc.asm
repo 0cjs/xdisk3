@@ -43,7 +43,7 @@ putmsg_3:
 		cp	'n'
 		jr	z,putmsg_n
 		cp	't'
-		jr	z,putmsg_t
+		jp	z,putmsg_t
 		cp	's'
 		jr	z,putmsg_s
 		cp	'c'
@@ -51,7 +51,7 @@ putmsg_3:
 		cp	'0'
 		jr	c,putmsg_4
 		cp	'7'+1
-		jr	c,putmsg_col
+		jp	c,putmsg_col
 putmsg_4:
 		call	putchr
 		jr	putmsg_1

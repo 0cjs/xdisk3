@@ -119,21 +119,21 @@ start_e2:
 
 ;-----------------------------------------------------------------------------
 
-		incl	"siodrv.asm"
-		incl	"io.asm"
-		incl	"packet.asm"
-		incl	"crc.asm"
-		incl	"rle.asm"
-		incl	"lz77d.asm"
-		incl	"getrom.asm"
-		incl	"disk.asm"
-		incl	"main.asm"
-		incl	"readtrk.asm"
-		incl	"writetrk.asm"
-		incl	"sysinfo.asm"
-		incl	"setdrive.asm"
-		incl	"misc.asm"
-		incl	"diskcode.asm"
+		include "siodrv.asm"
+		include "io.asm"
+		include "packet.asm"
+		include "crc.asm"
+		include "rle.asm"
+		include "lz77d.asm"
+		include "getrom.asm"
+		include "disk.asm"
+		include "main.asm"
+		include "readtrk.asm"
+		include "writetrk.asm"
+		include "sysinfo.asm"
+		include "setdrive.asm"
+		include "misc.asm"
+		include "diskcode.asm"
 
 ;-----------------------------------------------------------------------------
 ;	ワーク
@@ -174,7 +174,7 @@ RsOverflow	db	0		; オーバーフローした？
 CmdPacket	ds	32		; コマンドパケットバッファ
 PacketBuffer	ds	64		; 小規模パケットのためのバッファ
 
-		org	(($+255) AND (NOT 255))
+		org	(($+255) & (~ 255))
 CRCTABLE_H	ds	100h
 CRCTABLE_L	ds	100h
 

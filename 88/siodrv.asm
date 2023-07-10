@@ -45,7 +45,7 @@ RsOpen:
 		ld	b,a
 		
 		ld	a,(PORTE6)
-		and	not 00000100b
+		and	not(00000100b)
 		or	b
 		ld	(PORTE6),a
 		out	(0e6h),a
@@ -58,7 +58,7 @@ RsClose:
 		ld	a,8
 		call	RsInitUSART
 		ld	a,(PORTE6)
-		and	not 4
+		and	not(4)
 		ld	(PORTE6),a
 		out	(0e6h),a
 		ei

@@ -36,7 +36,7 @@ CmdSetDrive_1:
 		ld	c,a
 		ld	a,(CmdPacket+2)
 		cp	0ffh
-		jr	z,CmdSetDrive_4
+		jp	z,CmdSetDrive_4
 		bit	7,a
 		jr	z,CmdSetDrive_4
 		bit	2,c
@@ -49,7 +49,7 @@ CmdSetDrive_1:
 		call	putmsg
 		db	"$5Disk in drive $6$n$7 is $2write protected$7!.",13,10,10,0
 		ld	a,E_WRITEPROTECT
-		jr	CmdSetDrive_e
+		jp	CmdSetDrive_e
 		
 CmdSetDrive_4:
 		; ディスクの種類は？
